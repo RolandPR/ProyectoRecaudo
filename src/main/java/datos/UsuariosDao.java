@@ -7,7 +7,8 @@ import java.util.*;
 
 public class UsuariosDao {
 
-    private static final String SQL_SELECT = "SELECT idusuarios, idrol, nombre FROM Usuarios";
+    private static final String SQL_SELECT = "SELECT * FROM Usuarios";
+    private static final String SQL_SELECT_ID = "SELECT idrol, nombre WHERE idusuarios=?";
     private static final String SQL_INSERT = "INSERT INTO Usuarios(idrol, nombre) VALUES(?, ?)";
     private static final String SQL_UPDATE = "UPDATE Usuarios SET idrol = ?, nombre = ?  WHERE idusuarios = ?";
     private static final String SQL_DELETE = "DELETE FROM Usuarios WHERE idusuarios = ?";
@@ -24,8 +25,8 @@ public class UsuariosDao {
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int idUsuario = rs.getInt("id_usuarios");
-                int idRol = rs.getInt("id_rol");
+                int idUsuario = rs.getInt("idusuarios");
+                int idRol = rs.getInt("idrol");
                 String nombre = rs.getString("nombre");
   
                 usuario = new Usuario(idUsuario, idRol, nombre);
