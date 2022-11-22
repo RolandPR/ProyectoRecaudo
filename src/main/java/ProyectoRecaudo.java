@@ -1,15 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
 
-/**
- *
- * @author rEstx
- */
+import datos.ClientesDAO;
+import datos.ProveedoresDAO;
+import datos.TiposDocumentosDAO;
+import modelos.Clientes;
+import modelos.Proveedores;
+import modelos.TiposDocumentos;
+
+
 public class ProyectoRecaudo {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        String tipo = "TI";
+        TiposDocumentos tipodocumento = new TiposDocumentos(tipo);
+        TiposDocumentosDAO tiposDocumentosDao = new TiposDocumentosDAO();
+        tiposDocumentosDao.insertar(tipodocumento);
+
+        String proveedor = "Movistar";
+        Proveedores proveedores = new Proveedores(proveedor);
+        ProveedoresDAO proveedoresDao = new ProveedoresDAO();
+        proveedoresDao.insertar(proveedores);
+        
+        String clienteS = "Roland";
+        Clientes clientes = new Clientes(1, clienteS, 1113681622);
+        ClientesDAO clientesDao = new ClientesDAO();
+        clientesDao.insertar(clientes);
     }
 }
