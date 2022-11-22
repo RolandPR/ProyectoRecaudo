@@ -21,7 +21,7 @@ public class CapturoArchivos {
 
             while ((linea = entrada1.readLine()) != null) {
                 String[] cliente = linea.split(separador);
-                personas.add(new Persona(cliente[0], cliente[1], Integer.valueOf(cliente[2]), Integer.valueOf(cliente[3])));
+                personas.add(new Persona(cliente[0], cliente[1], Integer.parseInt(cliente[2]), Integer.parseInt(cliente[3])));
                
 
             }
