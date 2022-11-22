@@ -8,8 +8,8 @@ import java.util.*;
 public class RolDao {
 
     private static final String SQL_SELECT = "SELECT id_rol, nombre FROM Rol";
-    private static final String SQL_INSERT = "INSERT INTO rol (nombre) VALUES (?::character varying[])";
-    private static final String SQL_UPDATE = "UPDATE Rol SET nombre = ?::character varying[] WHERE id_rol = ?";
+    private static final String SQL_INSERT = "INSERT INTO rol (nombre) VALUES (?)";
+    private static final String SQL_UPDATE = "UPDATE Rol SET nombre = ? WHERE id_rol = ?";
     private static final String SQL_DELETE = "DELETE FROM Rol WHERE id_rol = ?";
     
     public List<Rol> seleccionar() {

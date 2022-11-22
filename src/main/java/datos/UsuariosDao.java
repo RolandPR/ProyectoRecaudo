@@ -7,10 +7,10 @@ import java.util.*;
 
 public class UsuariosDao {
 
-    private static final String SQL_SELECT = "SELECT id_usuarios, id_rol, nombre FROM Usuarios";
-    private static final String SQL_INSERT = "INSERT INTO Usuarios(id_rol, nombre) VALUES(?, ?::character varying[])";
-    private static final String SQL_UPDATE = "UPDATE Usuarios SET id_rol = ?, nombre = ?::character varying[]  WHERE id_usuarios = ?";
-    private static final String SQL_DELETE = "DELETE FROM Usuarios WHERE id_usuarios = ?";
+    private static final String SQL_SELECT = "SELECT idusuarios, idrol, nombre FROM Usuarios";
+    private static final String SQL_INSERT = "INSERT INTO Usuarios(idrol, nombre) VALUES(?, ?)";
+    private static final String SQL_UPDATE = "UPDATE Usuarios SET idrol = ?, nombre = ?  WHERE idusuarios = ?";
+    private static final String SQL_DELETE = "DELETE FROM Usuarios WHERE idusuarios = ?";
     
     public List<Usuario> seleccionar() {
         Connection conn = null;
