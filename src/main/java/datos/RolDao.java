@@ -2,16 +2,18 @@ package datos;
 
 import static datos.Conexion.*;
 import modelos.Rol;
+import modelos.Usuario;
+
 import java.sql.*;
 import java.util.*;
 
 public class RolDao {
 
-    private static final String SQL_SELECT = "SELECT * nombre FROM Rol";
-    private static final String SQL_SELECT_ID = "SELECT nombre WHERE id_rol=?";
+    private static final String SQL_SELECT = "SELECT *  FROM Rol";
+    private static final String SQL_SELECT_ID = "SELECT * FROM Rol WHERE idrol=?";
     private static final String SQL_INSERT = "INSERT INTO rol (nombre) VALUES (?)";
-    private static final String SQL_UPDATE = "UPDATE Rol SET nombre = ? WHERE id_rol = ?";
-    private static final String SQL_DELETE = "DELETE FROM Rol WHERE id_rol = ?";
+    private static final String SQL_UPDATE = "UPDATE Rol SET nombre = ? WHERE idrol = ?";
+    private static final String SQL_DELETE = "DELETE FROM Rol WHERE idrol = ?";
     
     public List<Rol> seleccionar() {
         Connection conn = null;
@@ -26,7 +28,7 @@ public class RolDao {
             rs = stmt.executeQuery();
             while (rs.next()) {
              
-                int idRol = rs.getInt("id_rol");
+                int idRol = rs.getInt("idrol");
                 String nombre = rs.getString("nombre");
   
                 rol = new Rol(idRol, nombre);
@@ -107,4 +109,34 @@ public class RolDao {
         }
         return registros;
     }
+     
+     public Rol selectById(int idRol){
+         Connection conn = null;
+         PreparedStatement stmt = null;
+         ResultSet rs = null;
+         Rol rol = null;
+         
+         try {
+             conn = getConnection();
+             stmt = conn.prepareStatement(SQL_SELECT_ID);
+             stmt.setInt(1, idRol);
+             rs = stmt.executeQuery();
+             
+             if (rs.next()) {
+                 int idRol_1 = rs.getInt("idrol");
+                 String nombre = rs.getString("nombre");
+                         
+                 rol = new Rol(idRol_1,nombre );
+                 //recaudo.setIdRecaudo(idRecaudo);
+             }
+             
+         } catch (SQLException ex) {
+             ex.printStackTrace(System.out);
+         } finally {
+             close(rs);
+             close(stmt);
+             close(conn);
+         }
+         return rol;
+     }
 }

@@ -15,12 +15,13 @@ public class TestJDBC {
 		  	UsuariosDao usuarioDao = new UsuariosDao();
 		  	RolDao rolDao = new RolDao();
 		  	
+		  	//System.out.println(usuarioDao.selectById(1));
 	        //Insertando un nuevo objeto de tipo Persona
 	        //Usuario usuarioNuevo = new Usuario(2,"Carlos");
 	        //usuarioDao.insertar(usuarioNuevo);
 
 	        //Modificar un objeto de persona existente
-	        //Usuario usuarioModificar = new Usuario(1,3,"{Camila}");
+	        //Usuario usuarioModificar = new Usuario(1,2,"Camila");
 	        //usuarioDao.actualizar(usuarioModificar);
 
 	        //Eliminar un registro
@@ -28,11 +29,11 @@ public class TestJDBC {
 	        //usuarioDao.eliminar(usuarioEliminar);
 	        
 	        //Listado Persona
-	        List<Usuario> personas = usuarioDao.seleccionar();
+	        //List<Rol> personas = rolDao.seleccionar();
 
-	        personas.forEach(persona -> {
-	            System.out.println("persona = " + persona);
-	        });
+	        //personas.forEach(persona -> {
+	        //    System.out.println("persona = " + persona);
+	        //});
 		  	
 		  	
 		  //Insertando un nuevo objeto de tipo Persona
@@ -41,7 +42,7 @@ public class TestJDBC {
 	       //rolDao.insertar(RolNuevo);
 		  	
 		  //Modificar un objeto de persona existente
-	        //Rol RolModificar = new Rol(3,"{esclavo premiun}");
+	        //Rol RolModificar = new Rol(2,"esclavo premiun");
 	        //rolDao.actualizar(RolModificar);
 		  	
 		  	//Eliminar un registro
@@ -49,7 +50,7 @@ public class TestJDBC {
 	        //System.out.println(rolEliminar);
 	        //rolDao.eliminar(rolEliminar);
 
-		  	
+		  	System.out.println(rolDao.selectById(2));
 	}
 
 }
