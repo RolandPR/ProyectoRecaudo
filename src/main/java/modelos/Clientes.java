@@ -5,9 +5,18 @@ public class Clientes {
     private int idClientes;
     private int idTiposDocumentos;
     private String nombre;
-    private int noDocumento;
+    private String noDocumento;
 
-    public Clientes(int idTiposDocumentos, String nombre, int noDocumento) {
+    public Clientes() {
+    }
+
+    public Clientes(String nombre, String noDocumento) {
+        this.nombre = nombre;
+        this.noDocumento = noDocumento;
+    }
+    
+    
+    public Clientes(int idTiposDocumentos, String nombre, String noDocumento) {
         this.idTiposDocumentos = idTiposDocumentos;
         this.nombre = nombre;
         this.noDocumento = noDocumento;
@@ -37,12 +46,14 @@ public class Clientes {
         this.nombre = nombre;
     }
 
-    public int getNoDocumento() {
+    public String getNoDocumento() {
         return noDocumento;
     }
 
-    public void setNoDocumento(int noDocumento) {
+    public void setNoDocumento(String noDocumento) {
         this.noDocumento = noDocumento;
     }
+
+    
 
 }

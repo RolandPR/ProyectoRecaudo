@@ -29,7 +29,7 @@ public class ClientesDAO {
             if (rs.next()) {
                 int idTiposDocumentos = rs.getInt("idTiposDocumentos");
                 String nombre = rs.getString("nombre");
-                int noDocumento = rs.getInt("noDocumento");
+                String noDocumento = rs.getString("noDocumento");
                 cliente = new Clientes(idTiposDocumentos, nombre, noDocumento);
                 cliente.setIdClientes(idClientes);
             }
@@ -58,7 +58,7 @@ public class ClientesDAO {
             while (rs.next()) {
                 int idClientes = rs.getInt("idClientes");
                 int idTiposDocumentos = rs.getInt("idTiposDocumentos");
-                int noDocumento = rs.getInt("noDocumento");
+                String noDocumento = rs.getString("noDocumento");
                 String nombre = rs.getString("nombre");
 
                 cliente = new Clientes(idTiposDocumentos, nombre, noDocumento);
@@ -79,15 +79,21 @@ public class ClientesDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         int registros = 0;
+        ResultSet rs = null;
 
         try {
             conn = getConnection();
-            stmt = conn.prepareStatement(SQL_INSERT);
+            stmt = conn.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, clientes.getIdTiposDocumentos());
             stmt.setString(2, clientes.getNombre());
-            stmt.setInt(3, clientes.getNoDocumento());
+            stmt.setString(3, clientes.getNoDocumento());
             
             registros = stmt.executeUpdate();
+            rs = stmt.getGeneratedKeys();
+            
+            if (rs.next()){
+                registros = rs.getInt(1);
+            }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         } finally {
@@ -107,7 +113,7 @@ public class ClientesDAO {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setInt(1, clientes.getIdTiposDocumentos());
             stmt.setString(2, clientes.getNombre());
-            stmt.setInt(3, clientes.getNoDocumento());
+            stmt.setString(3, clientes.getNoDocumento());
             stmt.setInt(4, clientes.getIdClientes());
             registros = stmt.executeUpdate();
         } catch (SQLException ex) {
