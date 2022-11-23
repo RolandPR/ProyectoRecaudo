@@ -12,16 +12,17 @@ public class TestJDBC {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		  	UsuariosDao usuarioDao = new UsuariosDao();
-		  	RolDao rolDao = new RolDao();
-		  	
-		  	//System.out.println(usuarioDao.selectById(1));
+		  	//UsuariosDao usuarioDao = new UsuariosDao();
+		  	//RolDao rolDao = new RolDao();
+		    //Usuario usuario = new Usuario("Carlos123");
+		  	//System.out.println(usuarioDao.selectByNombreUsuario(usuario));
 	        //Insertando un nuevo objeto de tipo Persona
-	        //Usuario usuarioNuevo = new Usuario(2,"Carlos");
+	        //Usuario usuarioNuevo = new Usuario(3,"borrrar","borrar",1143878535,"borrar","2222");
 	        //usuarioDao.insertar(usuarioNuevo);
 
 	        //Modificar un objeto de persona existente
-	        //Usuario usuarioModificar = new Usuario(1,2,"Camila");
+	        //Usuario usuarioModificar = new Usuario(2,1,"Camila","Lopez",1143878535,"Cami","2222");
+	        //System.out.println(usuarioModificar);
 	        //usuarioDao.actualizar(usuarioModificar);
 
 	        //Eliminar un registro
@@ -37,7 +38,7 @@ public class TestJDBC {
 		  	
 		  	
 		  //Insertando un nuevo objeto de tipo Persona
-	       //Rol RolNuevo = new Rol("Trabajador");
+	       //Rol RolNuevo = new Rol("Cajero");
 	       //System.out.println(RolNuevo);
 	       //rolDao.insertar(RolNuevo);
 		  	
@@ -50,7 +51,7 @@ public class TestJDBC {
 	        //System.out.println(rolEliminar);
 	        //rolDao.eliminar(rolEliminar);
 
-		  	System.out.println(rolDao.selectById(2));
+		  	//System.out.println(rolDao.selectById(2));
 	}
 
 }
