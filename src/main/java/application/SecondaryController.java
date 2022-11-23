@@ -57,6 +57,14 @@ public class SecondaryController {
     	alert.setGraphic(new ImageView(this.getClass().getResource("VerificacionSinFondo.png").toString()));
     	alert.show();
     }
+    
+    public void showInformationUsuarioRepetido() {
+    	Alert alert = new Alert(AlertType.WARNING);
+    	alert.setTitle("Información");
+    	alert.setHeaderText(null);
+    	alert.setContentText("El usuario ya se encuentra registrado");
+    	alert.show();
+    }
     public void showErrorDialog(int campoError) {
     	Alert alert = new Alert(AlertType.ERROR);
     	alert.setTitle("Error");
@@ -125,8 +133,14 @@ public class SecondaryController {
     	}
     	Usuario usuarioRegistroUsuario = new Usuario(rolUsuario, nombreUsuario, apellidoUsuario, cedulaUsuario, nombreUsuario, ContraseniaUsuario);
     	UsuariosDao usuarioDao = new UsuariosDao();
-    	usuarioDao.insertar(usuarioRegistroUsuario);
-    	showInformationDialog();
+    	if(usuarioDao.selectByNombreUsuario(usuarioRegistroUsuario) == null && usuarioDao.selectByCedula(usuarioRegistroUsuario) == null) {
+    		usuarioDao.insertar(usuarioRegistroUsuario);
+        	showInformationDialog();
+    	}else {
+    		showInformationUsuarioRepetido();
+    	}
+    	
+    	
     }
 
     @FXML

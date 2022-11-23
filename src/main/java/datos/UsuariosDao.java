@@ -13,6 +13,7 @@ public class UsuariosDao {
     private static final String SQL_SELECT = "SELECT * FROM Usuarios";
     //private static final String SQL_SELECT_ID = "SELECT * FROM Usuarios WHERE idusuarios=?";
     private static final String SQL_SELECT_USERNAME = "SELECT * FROM Usuarios WHERE nombreusuario=?";
+    private static final String SQL_SELECT_CEDULA = "SELECT * FROM Usuarios WHERE cedula=?";
     private static final String SQL_INSERT = "INSERT INTO Usuarios(idrol, nombre, apellido, cedula, nombreusuario, clave) VALUES(?, ?, ?, ?, ?, ?)";
     private static final String SQL_UPDATE = "UPDATE Usuarios SET idrol = ?, nombre = ?, apellido = ?, cedula = ?, nombreusuario = ?, clave = ?  WHERE idusuarios = ?";
     private static final String SQL_DELETE = "DELETE FROM Usuarios WHERE idusuarios = ?";
@@ -136,6 +137,40 @@ public class UsuariosDao {
              conn = getConnection();
              stmt = conn.prepareStatement(SQL_SELECT_USERNAME);
              stmt.setString(1, usuario.getNombreUsuario());
+             rs = stmt.executeQuery();
+             
+             if (rs.next()) {
+                 int idUsuario = rs.getInt("idusuarios");
+                 int idRol = rs.getInt("idrol");
+                 String nombre = rs.getString("nombre");
+                 String apellido = rs.getString("apellido");
+                 double cedula = rs.getDouble("cedula");
+                 String nombreUsuario = rs.getString("nombreusuario");
+                 String clave = rs.getString("clave");
+                 usuarioBusqueda = new Usuario(idUsuario,idRol, nombre,apellido,cedula,nombreUsuario,clave );
+                 //recaudo.setIdRecaudo(idRecaudo);
+             }
+             
+         } catch (SQLException ex) {
+             ex.printStackTrace(System.out);
+         } finally {
+             close(rs);
+             close(stmt);
+             close(conn);
+         }
+         return usuarioBusqueda;
+     }
+     
+     public Usuario selectByCedula(Usuario usuario){
+         Connection conn = null;
+         PreparedStatement stmt = null;
+         ResultSet rs = null;
+         Usuario usuarioBusqueda = null;
+         
+         try {
+             conn = getConnection();
+             stmt = conn.prepareStatement(SQL_SELECT_CEDULA);
+             stmt.setDouble(1, usuario.getCedula());
              rs = stmt.executeQuery();
              
              if (rs.next()) {
