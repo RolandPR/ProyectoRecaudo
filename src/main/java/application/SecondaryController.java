@@ -1,0 +1,164 @@
+package application;
+
+import modelos.Usuario;
+import datos.UsuariosDao;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Line;
+
+public class SecondaryController {
+
+    @FXML
+    private TextField apellido;
+
+    @FXML
+    private TextField cedula;
+
+    @FXML
+    private PasswordField contrasenia;
+
+    @FXML
+    private ImageView iconoUsuario;
+
+    @FXML
+    private Line lineaDer;
+
+    @FXML
+    private Line lineaIzq;
+
+    @FXML
+    private MenuButton menuUser;
+
+    @FXML
+    private TextField nombre;
+
+    @FXML
+    private Button registro;
+
+    @FXML
+    private TextField rol;
+
+    @FXML
+    private TextField usuario;
+    
+    
+    public void showInformationDialog() {
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Confirmación");
+    	alert.setHeaderText(null);
+    	alert.setContentText("El usuario se ha registrado correctamente");
+    	alert.setGraphic(new ImageView(this.getClass().getResource("VerificacionSinFondo.png").toString()));
+    	alert.show();
+    }
+    public void showErrorDialog(int campoError) {
+    	Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Error");
+    	alert.setHeaderText(null);
+		switch (campoError) {
+		case 1: {
+			alert.setContentText("El campo nombre es obligatorio");
+			break;
+		}case 2:{
+			alert.setContentText("El campo apellido es obligatorio");
+			break;
+		}case 3:{
+			alert.setContentText("El campo cedula es obligatorio");
+			break;
+		}case 4:{
+			alert.setContentText("El campo usuario es obligatorio");
+			break;
+		}case 5:{
+			alert.setContentText("El campo contraseña es obligatorio");
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + campoError);
+		}
+    	
+    	alert.show();
+    }
+    
+    public void validarCampo() {
+    	int numero = 0;
+    	if(nombre.getText().isEmpty()) {
+    		numero =1;
+    		showErrorDialog(numero);
+    	}else if (apellido.getText().isEmpty()) {
+    		numero =2;
+    		showErrorDialog(numero);
+    	}else if (cedula.getText().isEmpty()) {
+    		numero =3;
+    		showErrorDialog(numero);
+    	}else if (usuario.getText().isEmpty()) {
+    		numero =4;
+    		showErrorDialog(numero);
+    	}else if (contrasenia.getText().isEmpty()) {
+    		numero =5;
+    		showErrorDialog(numero);
+    	}else {
+    		registroUsuarios();
+    	}
+    
+    }
+    
+    public void registroUsuarios() {
+    	
+    	int rolUsuario = 3;
+    	String nombreUsuario = nombre.getText();
+    	String apellidoUsuario = apellido.getText();
+    	Double cedulaUsuario = Double.parseDouble(cedula.getText());
+    	String cuentaUsuario = usuario.getText();
+    	String ContraseniaUsuario = contrasenia.getText();
+    	if(rol.getText().equals("Administrador")) {
+    		rolUsuario = 3;
+    	}else if(rol.getText().equals("Cajero")) {
+    		rolUsuario = 1; 
+    	}else if(rol.getText().equals("Operador")) {
+    		rolUsuario = 4;
+    	}
+    	Usuario usuarioRegistroUsuario = new Usuario(rolUsuario, nombreUsuario, apellidoUsuario, cedulaUsuario, nombreUsuario, ContraseniaUsuario);
+    	UsuariosDao usuarioDao = new UsuariosDao();
+    	usuarioDao.insertar(usuarioRegistroUsuario);
+    	showInformationDialog();
+    }
+
+    @FXML
+    void IngresarCedula(ActionEvent event) {
+
+    }
+
+    @FXML
+    void IngresarUsuario(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ingresarApellido(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ingresarContrasenia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ingresarNombre(ActionEvent event) {
+
+    }
+
+    @FXML
+    void registroUsuario(ActionEvent event) {
+    	validarCampo();
+    	
+
+    }
+
+}

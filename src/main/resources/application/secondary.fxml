@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SecondaryController">
+   <children>
+      <Pane prefHeight="46.0" prefWidth="600.0" style="-fx-background-color: #1178ff;">
+         <children>
+            <ImageView fx:id="iconoUsuario" fitHeight="25.0" fitWidth="23.0" layoutX="453.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Downloads/user.png" />
+               </image>
+            </ImageView>
+            <MenuButton fx:id="menuUser" layoutX="476.0" layoutY="11.0" mnemonicParsing="false" text="Usuario">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Cerrar sesión" />
+               </items>
+            </MenuButton>
+         </children>
+      </Pane>
+      <Line fx:id="lineaDer" endX="100.0" layoutX="468.0" layoutY="95.0" startX="-100.0" stroke="#8a8484" />
+      <Line fx:id="lineaIzq" endX="100.0" layoutX="144.0" layoutY="95.0" startX="-109.0" stroke="#8a8484" />
+      <TextField fx:id="nombre" layoutX="34.0" layoutY="147.0" onAction="#ingresarNombre" prefHeight="29.0" prefWidth="262.0" promptText="Nombre" />
+      <TextField fx:id="apellido" layoutX="307.0" layoutY="147.0" onAction="#ingresarApellido" prefHeight="29.0" prefWidth="262.0" promptText="Apellido" />
+      <TextField fx:id="usuario" layoutX="33.0" layoutY="254.0" onAction="#IngresarUsuario" prefHeight="29.0" prefWidth="262.0" promptText="Usuario" />
+      <PasswordField fx:id="contrasenia" layoutX="307.0" layoutY="254.0" onAction="#ingresarContrasenia" prefHeight="29.0" prefWidth="262.0" promptText="Contraseña" />
+      <Button fx:id="registro" contentDisplay="CENTER" layoutX="32.0" layoutY="310.0" mnemonicParsing="false" onAction="#registroUsuario" prefHeight="29.0" prefWidth="536.0" style="-fx-background-color: #68F087;" text="Registrar" />
+      <TextField fx:id="cedula" layoutX="34.0" layoutY="200.0" onAction="#IngresarCedula" prefHeight="29.0" prefWidth="262.0" promptText="Cédula" />
+      <Label layoutX="254.0" layoutY="74.0" text="Registro">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <TextField fx:id="rol" layoutX="307.0" layoutY="202.0" prefHeight="29.0" prefWidth="262.0" promptText="Rol" />
+   </children>
+</AnchorPane>
