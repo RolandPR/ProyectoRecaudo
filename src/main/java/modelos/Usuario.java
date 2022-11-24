@@ -25,6 +25,21 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 	}
 	
+	public Usuario(double cedula){
+		this.cedula = cedula;
+	}
+	
+	public Usuario(String nombreUsuario, double cedula){
+		this.nombreUsuario = nombreUsuario;
+		this.cedula = cedula;
+	}
+	
+	public Usuario(String nombreUsuario, String clave){
+		this.nombreUsuario = nombreUsuario;
+		this.clave = clave;
+	}
+	
+	
 	public Usuario(int idRol, String nombre, String apellido, double cedula, String nombreUsuario, String clave) {
 		this.nombre = nombre;
 		this.idRol = idRol;
@@ -33,6 +48,8 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 		this.clave = clave;
 	}
+	
+
 	
 	public Usuario(int idUsuario, int idRol, String nombre, String apellido, double cedula, String nombreUsuario, String clave) {
 		this.idUsuario = idUsuario;

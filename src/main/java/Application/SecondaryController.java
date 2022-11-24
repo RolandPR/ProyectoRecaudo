@@ -7,37 +7,51 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import modelos.Usuario;
+
+import datos.UsuariosDao;
 
 public class SecondaryController {
 
-    @FXML
-    private Label Labelniciarsesion;
+	@FXML
+	private Label Labelniciarsesion;
 
-    @FXML
-    private PasswordField PswrdfIeld;
+	@FXML
+	private PasswordField PswrdfIeld;
 
-    @FXML
-    private TextArea TxtAmswelcome;
+	@FXML
+	private TextArea TxtAmswelcome;
 
-    @FXML
-    private Button bttnigresar;
+	@FXML
+	private Button bttnigresar;
 
-    @FXML
-    private TextField txfusuario;
+	@FXML
+	private TextField txfusuario;
 
-    @FXML
-    void Contrasenna(ActionEvent event) {
+	@FXML
+	void Contrasenna(ActionEvent event) {
 
-    }
-//boton que guarda la informamcion ingresada por el usuario
-    @FXML
-    void LoginUsuario(ActionEvent event) {
+	}
 
-    }
+	@FXML
+	void LoginUsuario(ActionEvent event) {
+		String nombre = txfusuario.getText();
+		System.out.println(nombre);
+		String clave = PswrdfIeld.getText();
+		Usuario usuario = new Usuario(nombre, clave);
+		UsuariosDao usuarioDao = new UsuariosDao();
+		if (usuarioDao.selectByClave(usuario) != null) {
+			System.out.println("cambio de ventana");
+		} else {
 
-    @FXML
-    void usuario(ActionEvent event) {
+			System.out.println("usuario y/o contrasenna incorrecto");
+		}
 
-    }
+	}
+
+	@FXML
+	void usuario(ActionEvent event) {
+
+	}
 
 }

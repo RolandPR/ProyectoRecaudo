@@ -5,9 +5,9 @@ import java.sql.*;
 public class Conexion {
 	//jdbc:postgresql://localhost:5432/ProyectoRecaudo
 	//Esca1323#pr
-    private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/SistemaRecaudos";
+    private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/curso";
     private static final String JDBC_USER = "postgres";
-    private static final String JDBC_PASSWORD = "Acc3s0R3m0t0";
+    private static final String JDBC_PASSWORD = "root";
 
     public static Connection getConnection() throws SQLException{
         return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
