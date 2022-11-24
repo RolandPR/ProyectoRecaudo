@@ -4,7 +4,6 @@ package datos;
 import static datos.Conexion.*;
 import java.sql.*;
 import java.util.*;
-import modelos.*;
 import modelos.Clientes;
 
 
@@ -30,7 +29,7 @@ public class ClientesDAO {
             if (rs.next()) {
                 int idTiposDocumentos = rs.getInt("idTiposDocumentos");
                 String nombre = rs.getString("nombre");
-                int noDocumento = rs.getInt("noDocumento");
+                String noDocumento = rs.getString("noDocumento");
                 cliente = new Clientes(idTiposDocumentos, nombre, noDocumento);
                 cliente.setIdClientes(idClientes);
             }
@@ -59,7 +58,7 @@ public class ClientesDAO {
             while (rs.next()) {
                 int idClientes = rs.getInt("idClientes");
                 int idTiposDocumentos = rs.getInt("idTiposDocumentos");
-                int noDocumento = rs.getInt("noDocumento");
+                String noDocumento = rs.getString("noDocumento");
                 String nombre = rs.getString("nombre");
 
                 cliente = new Clientes(idTiposDocumentos, nombre, noDocumento);
@@ -86,7 +85,7 @@ public class ClientesDAO {
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setInt(1, clientes.getIdTiposDocumentos());
             stmt.setString(2, clientes.getNombre());
-            stmt.setInt(3, clientes.getNoDocumento());
+            stmt.setString(3, clientes.getNoDocumento());
             
             registros = stmt.executeUpdate();
         } catch (SQLException ex) {
@@ -108,7 +107,7 @@ public class ClientesDAO {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setInt(1, clientes.getIdTiposDocumentos());
             stmt.setString(2, clientes.getNombre());
-            stmt.setInt(3, clientes.getNoDocumento());
+            stmt.setString(3, clientes.getNoDocumento());
             stmt.setInt(4, clientes.getIdClientes());
             registros = stmt.executeUpdate();
         } catch (SQLException ex) {

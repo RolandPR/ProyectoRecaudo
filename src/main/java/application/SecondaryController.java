@@ -127,17 +127,17 @@ public class SecondaryController {
     	int rolUsuario = 3;
     	String nombreUsuario = nombre.getText();
     	String apellidoUsuario = apellido.getText();
-    	Double cedulaUsuario = Double.parseDouble(cedula.getText());
+    	String cedulaUsuario = cedula.getText();
     	String cuentaUsuario = usuario.getText();
     	String ContraseniaUsuario = contrasenia.getText();
     	if(rolEscogido.getText().equals("Administrador")) {
-    		rolUsuario = 3;
+    		rolUsuario = 2;
     	}else if(rolEscogido.getText().equals("Cajero")) {
-    		rolUsuario = 1; 
+    		rolUsuario = 3; 
     	}else if(rolEscogido.getText().equals("Operador")) {
-    		rolUsuario = 4;
+    		rolUsuario = 1;
     	}
-    	Usuario usuarioRegistroUsuario = new Usuario(rolUsuario, nombreUsuario, apellidoUsuario, cedulaUsuario, nombreUsuario, ContraseniaUsuario);
+    	Usuario usuarioRegistroUsuario = new Usuario(rolUsuario, nombreUsuario, apellidoUsuario, cedulaUsuario, cuentaUsuario, ContraseniaUsuario);
     	UsuariosDao usuarioDao = new UsuariosDao();
     	if(usuarioDao.selectByNombreUsuario(usuarioRegistroUsuario) == null && usuarioDao.selectByCedula(usuarioRegistroUsuario) == null) {
     		usuarioDao.insertar(usuarioRegistroUsuario);

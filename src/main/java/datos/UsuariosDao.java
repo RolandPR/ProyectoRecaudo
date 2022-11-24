@@ -10,13 +10,13 @@ import java.util.*;
 
 public class UsuariosDao {
 
-    private static final String SQL_SELECT = "SELECT * FROM Usuarios";
+    private static final String SQL_SELECT = "SELECT * FROM usuarios";
     //private static final String SQL_SELECT_ID = "SELECT * FROM Usuarios WHERE idusuarios=?";
-    private static final String SQL_SELECT_USERNAME = "SELECT * FROM Usuarios WHERE nombreusuario=?";
-    private static final String SQL_SELECT_CEDULA = "SELECT * FROM Usuarios WHERE cedula=?";
-    private static final String SQL_INSERT = "INSERT INTO Usuarios(idrol, nombre, apellido, cedula, nombreusuario, clave) VALUES(?, ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE Usuarios SET idrol = ?, nombre = ?, apellido = ?, cedula = ?, nombreusuario = ?, clave = ?  WHERE idusuarios = ?";
-    private static final String SQL_DELETE = "DELETE FROM Usuarios WHERE idusuarios = ?";
+    private static final String SQL_SELECT_USERNAME = "SELECT * FROM usuarios WHERE usuario=?";
+    private static final String SQL_SELECT_CEDULA = "SELECT * FROM usuarios WHERE cedula=?";
+    private static final String SQL_INSERT = "INSERT INTO usuarios(idrol, nombre, apellido, cedula, usuario, clave) VALUES(?, ?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE usuarios SET idrol = ?, nombre = ?, apellido = ?, cedula = ?, usuario = ?, clave = ?  WHERE idusuarios = ?";
+    private static final String SQL_DELETE = "DELETE FROM usuarios WHERE idusuarios = ?";
     
     public List<Usuario> seleccionar() {
         Connection conn = null;
@@ -34,8 +34,8 @@ public class UsuariosDao {
                 int idRol = rs.getInt("idrol");
                 String nombre = rs.getString("nombre");
                 String apellido = rs.getString("apellido");
-                double cedula = rs.getDouble("cedula");
-                String nombreUsuario = rs.getString("nombreusuario");
+                String cedula = rs.getString("cedula");
+                String nombreUsuario = rs.getString("usuario");
                 String clave = rs.getString("clave");
                 
   
@@ -65,7 +65,7 @@ public class UsuariosDao {
             stmt.setInt(1, usuario.getIdRol());
             stmt.setString(2, usuario.getNombre());
             stmt.setString(3, usuario.getApellido());
-            stmt.setDouble(4,usuario.getCedula());
+            stmt.setString(4,usuario.getCedula());
             stmt.setString(5, usuario.getNombreUsuario());
             stmt.setString(6, usuario.getClave());
              
@@ -92,7 +92,7 @@ public class UsuariosDao {
             stmt.setString(2, usuario.getNombre());
             stmt.setInt(7, usuario.getIdUsuario());
             stmt.setString(3,usuario.getApellido());
-            stmt.setDouble(4, usuario.getCedula());
+            stmt.setString(4, usuario.getCedula());
             stmt.setString(5, usuario.getNombreUsuario());
             stmt.setString(6, usuario.getClave());
             registros = stmt.executeUpdate();
@@ -144,8 +144,8 @@ public class UsuariosDao {
                  int idRol = rs.getInt("idrol");
                  String nombre = rs.getString("nombre");
                  String apellido = rs.getString("apellido");
-                 double cedula = rs.getDouble("cedula");
-                 String nombreUsuario = rs.getString("nombreusuario");
+                 String cedula = rs.getString("cedula");
+                 String nombreUsuario = rs.getString("usuario");
                  String clave = rs.getString("clave");
                  usuarioBusqueda = new Usuario(idUsuario,idRol, nombre,apellido,cedula,nombreUsuario,clave );
                  //recaudo.setIdRecaudo(idRecaudo);
@@ -170,7 +170,7 @@ public class UsuariosDao {
          try {
              conn = getConnection();
              stmt = conn.prepareStatement(SQL_SELECT_CEDULA);
-             stmt.setDouble(1, usuario.getCedula());
+             stmt.setString(1, usuario.getCedula());
              rs = stmt.executeQuery();
              
              if (rs.next()) {
@@ -178,8 +178,8 @@ public class UsuariosDao {
                  int idRol = rs.getInt("idrol");
                  String nombre = rs.getString("nombre");
                  String apellido = rs.getString("apellido");
-                 double cedula = rs.getDouble("cedula");
-                 String nombreUsuario = rs.getString("nombreusuario");
+                 String cedula = rs.getString("cedula");
+                 String nombreUsuario = rs.getString("usuario");
                  String clave = rs.getString("clave");
                  usuarioBusqueda = new Usuario(idUsuario,idRol, nombre,apellido,cedula,nombreUsuario,clave );
                  //recaudo.setIdRecaudo(idRecaudo);

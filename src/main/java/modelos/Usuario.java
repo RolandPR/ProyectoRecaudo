@@ -8,7 +8,7 @@ public class Usuario {
 	private	int idRol;
 	private String nombre;
 	private String apellido;
-	private double cedula;
+	private String cedula;
 	private String nombreUsuario;
 	private String clave;
 	
@@ -25,7 +25,7 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 	}
 	
-	public Usuario(int idRol, String nombre, String apellido, double cedula, String nombreUsuario, String clave) {
+	public Usuario(int idRol, String nombre, String apellido, String cedula, String nombreUsuario, String clave) {
 		this.nombre = nombre;
 		this.idRol = idRol;
 		this.apellido = apellido;
@@ -34,7 +34,7 @@ public class Usuario {
 		this.clave = clave;
 	}
 	
-	public Usuario(int idUsuario, int idRol, String nombre, String apellido, double cedula, String nombreUsuario, String clave) {
+	public Usuario(int idUsuario, int idRol, String nombre, String apellido, String cedula, String nombreUsuario, String clave) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.idRol = idRol;
@@ -55,11 +55,11 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 
-	public double getCedula() {
+	public String getCedula() {
 		return cedula;
 	}
 
-	public void setCedula(double cedula) {
+	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
 

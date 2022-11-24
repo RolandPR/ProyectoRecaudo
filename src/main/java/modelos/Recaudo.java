@@ -7,11 +7,11 @@ public class Recaudo {
     private int idRecaudo;
     private int idClientes;
     private int idProveedores;
-    private long noReferencia;
+    private String noReferencia;
     private float valor;
     private Date fechaVencimiento;
 
-    public Recaudo(int idClientes, int idProveedores, long noReferencia, float valor, Date fechaVencimiento) {
+    public Recaudo(int idClientes, int idProveedores, String noReferencia, float valor, Date fechaVencimiento) {
         this.idClientes = idClientes;
         this.idProveedores = idProveedores;
         this.noReferencia = noReferencia;
@@ -43,11 +43,11 @@ public class Recaudo {
         this.idProveedores = idProveedores;
     }
 
-    public long getNoReferencia() {
+    public String getNoReferencia() {
         return noReferencia;
     }
 
-    public void setNoReferencia(long noReferencia) {
+    public void setNoReferencia(String noReferencia) {
         this.noReferencia = noReferencia;
     }
 

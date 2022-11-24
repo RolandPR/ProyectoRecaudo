@@ -31,7 +31,7 @@ public class RecaudoDAO {
             if (rs.next()) {
                 int idClientes = rs.getInt("idClientes");
                 int idProveedores = rs.getInt("idProveedores");
-                long noReferencia = rs.getLong("noReferencia");
+                String noReferencia = rs.getString("noReferencia");
                 float valor = rs.getFloat("valor");
                 Date fechaVencimiento = rs.getDate("fechaVencimiento");
                 
@@ -64,7 +64,7 @@ public class RecaudoDAO {
                 int idRecaudo = rs.getInt("idRecaudo");
                 int idClientes = rs.getInt("idClientes");
                 int idProveedores = rs.getInt("idProveedores");
-                long noReferencia = rs.getLong("noReferencia");
+                String noReferencia = rs.getString("noReferencia");
                 float valor = rs.getFloat("valor");
                 Date fechaVencimiento = rs.getDate("fechaVencimiento");
 
@@ -92,7 +92,7 @@ public class RecaudoDAO {
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setInt(1, recaudo.getIdClientes());
             stmt.setInt(2, recaudo.getIdProveedores());
-            stmt.setLong(3, recaudo.getNoReferencia());
+            stmt.setString(3, recaudo.getNoReferencia());
             stmt.setFloat(4, recaudo.getValor());
             stmt.setDate(5, (Date) recaudo.getFechaVencimiento());
             
@@ -116,7 +116,7 @@ public class RecaudoDAO {
             stmt = conn.prepareStatement(SQL_UPDATE);
             stmt.setInt(1, recaudo.getIdClientes());
             stmt.setInt(2, recaudo.getIdProveedores());
-            stmt.setLong(3, recaudo.getNoReferencia());
+            stmt.setString(3, recaudo.getNoReferencia());
             stmt.setFloat(4, recaudo.getValor());
             stmt.setDate(5, (Date) recaudo.getFechaVencimiento());
             stmt.setInt(6, recaudo.getIdRecaudo());

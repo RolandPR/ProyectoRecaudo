@@ -10,6 +10,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import capturoarchivos.CapturoArchivos;
 
 public class PrimaryController {
 
@@ -49,15 +50,21 @@ public class PrimaryController {
     void Open(ActionEvent event) {
     	FileChooser fileChooser = new FileChooser();
     	fileChooser.setTitle("Explorador de archivos");
-    	fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV", "*.csv"));
+    	fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("txt", "*.txt"));
     	File selectedFile = fileChooser.showOpenDialog(null);
+    	String path = selectedFile.getAbsolutePath();
+    	String selectPath = path.replace("\\" , "\\\\");
     	
     	
     	if(selectedFile != null) {
+    		
+    		CapturoArchivos archivos = new CapturoArchivos();
+    		archivos.leerArchivo(selectPath);
     		showInformationDialog();
     	}else {
     		showWarningDialog();
     	}
+    	
 
 
     }
