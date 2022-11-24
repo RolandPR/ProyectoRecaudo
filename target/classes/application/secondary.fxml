@@ -50,10 +50,5 @@
         </items>
       </MenuButton>
       <Label fx:id="rolEscogido" layoutX="368.0" layoutY="200.0" prefHeight="29.0" prefWidth="201.0" />
-      <ImageView fitHeight="89.0" fitWidth="152.0" layoutX="22.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@user.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>
