@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -43,10 +44,15 @@ public class SecondaryController {
     private Button registro;
 
     @FXML
-    private TextField rol;
-
-    @FXML
     private TextField usuario;
+    
+    @FXML
+    private MenuButton roles;
+    
+    @FXML
+    private Label rolEscogido;
+    
+    
     
     
     public void showInformationDialog() {
@@ -124,11 +130,11 @@ public class SecondaryController {
     	Double cedulaUsuario = Double.parseDouble(cedula.getText());
     	String cuentaUsuario = usuario.getText();
     	String ContraseniaUsuario = contrasenia.getText();
-    	if(rol.getText().equals("Administrador")) {
+    	if(rolEscogido.getText().equals("Administrador")) {
     		rolUsuario = 3;
-    	}else if(rol.getText().equals("Cajero")) {
+    	}else if(rolEscogido.getText().equals("Cajero")) {
     		rolUsuario = 1; 
-    	}else if(rol.getText().equals("Operador")) {
+    	}else if(rolEscogido.getText().equals("Operador")) {
     		rolUsuario = 4;
     	}
     	Usuario usuarioRegistroUsuario = new Usuario(rolUsuario, nombreUsuario, apellidoUsuario, cedulaUsuario, nombreUsuario, ContraseniaUsuario);
@@ -172,6 +178,29 @@ public class SecondaryController {
     void registroUsuario(ActionEvent event) {
     	validarCampo();
     	
+
+    }
+    
+    @FXML
+    void escogerRol(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void administrador(ActionEvent event) {
+    	rolEscogido.setText("Administrador");
+
+    }
+    
+    @FXML
+    void cajero(ActionEvent event) {
+    	rolEscogido.setText("Cajero");
+
+    }
+    
+    @FXML
+    void operador(ActionEvent event) {
+    	rolEscogido.setText("Operador");
 
     }
 

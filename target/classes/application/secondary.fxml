@@ -17,16 +17,16 @@
    <children>
       <Pane prefHeight="46.0" prefWidth="600.0" style="-fx-background-color: #1178ff;">
          <children>
+            <ImageView fx:id="icono" fitHeight="46.0" fitWidth="22.0" layoutX="454.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@user.png" />
+               </image>
+            </ImageView>
             <MenuButton fx:id="menuUser" layoutX="476.0" layoutY="11.0" mnemonicParsing="false" text="Usuario">
                <items>
                   <MenuItem mnemonicParsing="false" text="Cerrar sesión" />
                </items>
             </MenuButton>
-            <ImageView fx:id="icono" fitHeight="46.0" fitWidth="22.0" layoutX="454.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../Downloads/user.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
       <Line fx:id="lineaDer" endX="100.0" layoutX="468.0" layoutY="95.0" startX="-100.0" stroke="#8a8484" />
@@ -42,6 +42,18 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <TextField fx:id="rol" layoutX="307.0" layoutY="202.0" prefHeight="29.0" prefWidth="262.0" promptText="Rol" />
+      <MenuButton fx:id="roles" layoutX="307.0" layoutY="200.0" mnemonicParsing="false" onAction="#escogerRol" prefHeight="29.0" prefWidth="52.0" text="Rol">
+        <items>
+          <MenuItem fx:id="itemAdministrador" mnemonicParsing="false" onAction="#administrador" text="Administrador" />
+          <MenuItem fx:id="itemOperador" mnemonicParsing="false" onAction="#operador" text="Operador" />
+            <MenuItem fx:id="itemCajero" mnemonicParsing="false" onAction="#cajero" text="Cajero" />
+        </items>
+      </MenuButton>
+      <Label fx:id="rolEscogido" layoutX="368.0" layoutY="200.0" prefHeight="29.0" prefWidth="201.0" />
+      <ImageView fitHeight="89.0" fitWidth="152.0" layoutX="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@user.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
