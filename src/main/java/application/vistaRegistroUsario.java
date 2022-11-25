@@ -14,7 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 
-public class SecondaryController {
+public class vistaRegistroUsario {
 
     @FXML
     private TextField apellido;
