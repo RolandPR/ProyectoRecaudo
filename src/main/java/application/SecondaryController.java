@@ -142,6 +142,11 @@ public class SecondaryController {
     	if(usuarioDao.selectByNombreUsuario(usuarioRegistroUsuario) == null && usuarioDao.selectByCedula(usuarioRegistroUsuario) == null) {
     		usuarioDao.insertar(usuarioRegistroUsuario);
         	showInformationDialog();
+			nombre.clear();
+			apellido.clear();
+			cedula.clear();
+			usuario.clear();
+			contrasenia.clear();
     	}else {
     		showInformationUsuarioRepetido();
     	}

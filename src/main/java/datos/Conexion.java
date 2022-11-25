@@ -5,7 +5,7 @@ import java.sql.*;
 public class Conexion {
 	//jdbc:postgresql://localhost:5432/ProyectoRecaudo
 	//Esca1323#pr
-    private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/SistemaRecaudos3";
+    private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/ProyectoRecaudo";
     private static final String JDBC_USER = "postgres";
     private static final String JDBC_PASSWORD = "Acc3s0R3m0t0";
 
