@@ -10,13 +10,14 @@ import java.util.*;
 
 public class UsuariosDao {
 
-    private static final String SQL_SELECT = "SELECT * FROM usuarios";
+	private static final String SQL_SELECT = "SELECT * FROM usuarios";
     //private static final String SQL_SELECT_ID = "SELECT * FROM Usuarios WHERE idusuarios=?";
     private static final String SQL_SELECT_USERNAME = "SELECT * FROM usuarios WHERE usuario=?";
     private static final String SQL_SELECT_CEDULA = "SELECT * FROM usuarios WHERE cedula=?";
-    private static final String SQL_INSERT = "INSERT INTO usuarios(idrol, nombre, apellido, cedula, usuario, clave) VALUES(?, ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE usuarios SET idrol = ?, nombre = ?, apellido = ?, cedula = ?, usuario = ?, clave = ?  WHERE idusuarios = ?";
+    private static final String SQL_INSERT = "INSERT INTO usuarios(idrol, nombre, apellido, cedula, usuario, clave) VALUES(?, ?, ?, ?, ?,crypt(?, gen_salt('bf')))";
+    private static final String SQL_UPDATE = "UPDATE usuarios SET idrol = ?, nombre = ?, apellido = ?, cedula = ?, usuario = ?  WHERE idusuarios = ?";
     private static final String SQL_DELETE = "DELETE FROM usuarios WHERE idusuarios = ?";
+    private static final String SQL_SELECT_CLAVE = "SELECT *  FROM usuarios WHERE usuario = ? AND clave = crypt(?, clave)";
     
     public List<Usuario> seleccionar() {
         Connection conn = null;
@@ -171,6 +172,41 @@ public class UsuariosDao {
              conn = getConnection();
              stmt = conn.prepareStatement(SQL_SELECT_CEDULA);
              stmt.setString(1, usuario.getCedula());
+             rs = stmt.executeQuery();
+             
+             if (rs.next()) {
+                 int idUsuario = rs.getInt("idusuarios");
+                 int idRol = rs.getInt("idrol");
+                 String nombre = rs.getString("nombre");
+                 String apellido = rs.getString("apellido");
+                 String cedula = rs.getString("cedula");
+                 String nombreUsuario = rs.getString("usuario");
+                 String clave = rs.getString("clave");
+                 usuarioBusqueda = new Usuario(idUsuario,idRol, nombre,apellido,cedula,nombreUsuario,clave );
+                 //recaudo.setIdRecaudo(idRecaudo);
+             }
+             
+         } catch (SQLException ex) {
+             ex.printStackTrace(System.out);
+         } finally {
+             close(rs);
+             close(stmt);
+             close(conn);
+         }
+         return usuarioBusqueda;
+     }
+     
+     public Usuario selectByClave(Usuario usuario){
+         Connection conn = null;
+         PreparedStatement stmt = null;
+         ResultSet rs = null;
+         Usuario usuarioBusqueda = null;
+         
+         try {
+             conn = getConnection();
+             stmt = conn.prepareStatement(SQL_SELECT_CLAVE);
+             stmt.setString(1, usuario.getNombreUsuario());
+             stmt.setString(2, usuario.getClave());
              rs = stmt.executeQuery();
              
              if (rs.next()) {

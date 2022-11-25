@@ -17,7 +17,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("secondary"), 600,460);
+        scene = new Scene(loadFXML("vistaLogin"), 660,420);
+        stage.setResizable(false);
+        //600,460 para vista admin y para vista operador
+        //756,519 vista Aleja
+        //660,420 vista Nata
         stage.setScene(scene);
         stage.show();
     }

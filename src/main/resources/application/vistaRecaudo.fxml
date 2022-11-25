@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.vistaRecaudoController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="756.0">
+         <children>
+            <Rectangle fx:id="Rectangulo" arcHeight="5.0" arcWidth="5.0" fill="#1178ff" height="48.0" stroke="BLACK" strokeType="INSIDE" width="756.0" />
+            <Label fx:id="LabelNamePag" layoutX="22.0" layoutY="13.0" text="PAGO CONVENIO MOVISTAR" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="LabelNumRef" layoutX="271.0" layoutY="87.0" text="Introduzca número de referencia">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="Labelinfo" layoutX="314.0" layoutY="277.0" text="Información de pago" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="TextNumRef" layoutX="304.0" layoutY="121.0" onAction="#AddRef" />
+            <TableView fx:id="TablaDatos" editable="true" layoutX="17.0" layoutY="325.0" onSort="#MostrarDatos" prefHeight="159.0" prefWidth="723.0">
+               <columns>
+                  <TableColumn fx:id="NumRefTable" prefWidth="93.0" text="No Referencia" />
+                  <TableColumn fx:id="IdentTable" prefWidth="107.0" text="Doc Ident" />
+                  <TableColumn fx:id="NameTable" prefWidth="142.0" text="Nombre" />
+                  <TableColumn fx:id="DateTable" prefWidth="84.0" text="Fecha" />
+                  <TableColumn fx:id="DescripTable" prefWidth="110.0" text="Descripción" />
+                  <TableColumn fx:id="AmountTable" prefWidth="95.0" text="Monto a pagar" />
+                  <TableColumn fx:id="InvoiceTable" prefWidth="93.0" text=" Impr Factura" />
+               </columns>
+            </TableView>
+            <MenuButton fx:id="CuentaScroll" layoutX="672.0" layoutY="12.0" mnemonicParsing="false" onAction="#Cuenta" opacity="0.96" pickOnBounds="false" text="Usuario" textFill="#0f141e">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Mi Cuenta" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cerrar Sesión" />
+               </items>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.5394737124443054" green="0.5394737124443054" blue="0.5394737124443054" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </MenuButton>
+            <Label fx:id="TotalTitulo" layoutX="285.0" layoutY="178.0" text="TOTAL A PAGAR">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="TextTotalsum" layoutX="304.0" layoutY="227.0" onAction="#MostrarTotal" />
+            <Button fx:id="botonBuscar" layoutX="346.0" layoutY="153.0" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
+            <ImageView fitHeight="27.0" fitWidth="58.0" layoutX="624.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@sesion3.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

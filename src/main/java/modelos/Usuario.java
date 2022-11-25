@@ -25,6 +25,11 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 	}
 	
+	public Usuario(String nombreUsuario, String clave){
+		this.nombreUsuario = nombreUsuario;
+		this.clave = clave;
+	}
+	
 	public Usuario(int idRol, String nombre, String apellido, String cedula, String nombreUsuario, String clave) {
 		this.nombre = nombre;
 		this.idRol = idRol;

@@ -3,6 +3,7 @@ package datos;
 
 import static datos.Conexion.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class RecaudoDAO {
     private static final String SQL_SELECT_ID = "SELECT idclientes, idproveedores, noreferencia, valor, fechavencimiento FROM recaudo WHERE idrecaudo=?";
     private static final String SQL_DELETE = "DELETE FROM recaudo WHERE idrecaudo=?";
     private static final String SQL_UPDATE = "UPDATE recaudo SET idclientes=?, idproveedores=?, noreferencia=?, valor=?, fechavencimiento=?  WHERE idrecaudo=?";
+    private static final String SQL_SELECT_REF = "SELECT idclientes, idproveedores, noreferencia, valor, fechavencimiento FROM recaudo WHERE noreferencia=?";
     
     public Recaudo selectById(int idRecaudo){
         Connection conn = null;
@@ -148,5 +150,37 @@ public class RecaudoDAO {
             close(conn);
         }
         return registros;
+    }
+    
+    public String selectByRef(String referencia){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String recaudo = "Referencia no encontrada";
+        
+        try {
+            conn = getConnection();
+            stmt = conn.prepareStatement(SQL_SELECT_REF);
+            stmt.setString(1, referencia);
+            rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                int idClientes = rs.getInt("idClientes");
+                int idProveedores = rs.getInt("idProveedores");
+                String noReferencia = rs.getString("noReferencia");
+                float valor = rs.getFloat("valor");
+                Date fechaVencimiento = rs.getDate("fechaVencimiento");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                recaudo =idClientes + "," + noReferencia + "," + valor + "," + sdf.format(fechaVencimiento);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        } finally {
+            close(rs);
+            close(stmt);
+            close(conn);
+        }
+        return recaudo;
     }
 }
